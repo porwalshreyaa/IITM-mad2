@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src=" https://cdn.jsdelivr.net/npm/mathjs@14.8.1/lib/browser/math.min.js "></script>
+    <script type="text/JavaScript">
+        function  addLog(msg) {
+            var ul = document.getElementById("log");
+            var li = document.createElement("li");
+            var msg_txt_node = document.createTextNode(msg);
+            li.appendChild(msg_txt_node);
+            ul.appendChild(li);
+        }
+
+
+
+
+
+
+      function math_calculate(){
+          expression = document.getElementById("expression").value;
+          console.log(expression);
+          if (expression){
+            try {
+                answer = math.evaluate(expression);
+                document.getElementById("expression").value = answer;
+                addLog(expression + " = " + answer);
+            } catch (e){
+                console.log("Bad Expression");
+                addLog(expression + " is bad. Please fix it.");
+            }
+          }
+      };
+
+
+
+      function initialize_app() {
+        calculate_btn = document.getElementById('calculate');
+        calculate_btn.addEventListener('click', math_calculate);
+      }
+
+      function input_number(v) {
+        expression = document.getElementById("expression").value;
+        expression = expression + v;
+        document.getElementById("expression").value = expression;
+      }
+
+      function input_operator(o) {
+        expression = document.getElementById("expression").value;
+        expression = expression + o;
+        document.getElementById("expression").value = expression;
+      }
+
+      function clear_exp() {
+        document.getElementById("expression").value = '';
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="container-sm form-control">
+
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col col-auto">
+          <input readonly
+            type="input"
+            class="form-control"
+            id="expression"
+            placeholder="3*5"
+          />
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col col-auto">
+          <button class="btn btn-primary" onclick="input_number('7')">7</button>
+          <button class="btn btn-primary" onclick="input_number('8')">8</button>
+          <button class="btn btn-primary" onclick="input_number('9')">9</button>
+          <button class="btn btn-warning" onclick="input_operator('/')">/</button>
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col col-auto">
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('4')">4</button>
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('5')">5</button>
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('6')">6</button>
+          <button class="btn btn-warning .row-cols-md-4" onclick="input_operator('*')">x</button>
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col col-auto">
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('1')">1</button>
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('2')">2</button>
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('3')">3</button>
+          <button class="btn btn-warning .row-cols-md-4" onclick="input_operator('-')">-</button>
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col col-auto">
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('0')">0</button>
+          <button class="btn btn-primary .row-cols-md-4" onclick="input_number('.')">.</button>
+          <button id="calculate" class="btn btn-success .row-cols-md-4">=</button>
+          <button class="btn btn-warning .row-cols-md-4" onclick="input_operator('+')">+</button>
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row">
+        <div class="col"></div>
+        <div class="col col-auto">
+          <button class="btn btn-danger .row-cols-md-4" onclick="clear_exp()">Clear</button>
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <div class="row ">
+        <div class="col"></div>
+        <div class="col-auto g-3 align-items-center">
+            <h3>Log</h3>
+            <ul id="log"></ul>
+        </div>
+
+        <div class="col"></div>
+      </div>
+
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+  <script type="text/javaScript">
+    initialize_app()
+  </script>
+</html>

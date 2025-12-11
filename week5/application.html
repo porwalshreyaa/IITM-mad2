@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ message }}</p>
+      Your Name: <input type="text" v-model="visitor_name" />
+      <p v-if="count==0">No replies Yet</p>
+      <p v-else-if="count>5">You are very popular</p>
+      <p v-else>Number of replies: {{ count }}</p>
+      <button v-on:click="sayHi">Say Hi</button>
+
+      <ul>
+        <li v-for="name in visitors">{{name}}</li>
+      </ul>
+
+      <h3>Topics Discussed in this Screencast</h3>
+      <ul>
+        <li v-for="topic in discussedTopics">{{topic}}</li>
+      </ul>
+      <div>
+        <h2>From Youtube (embed) Link</h2>
+        <iframe
+          width="560"
+          height="315"
+          :src="youtube_link"
+          title="Watch this before installing any database"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div>
+        <h2>From Local - Filesystem - "iframe" Tag</h2>
+        <iframe
+          width="560"
+          height="315"
+          :src="video2_link"
+          frameborder="0"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+      <div>
+        <h2>From Local - Filesystem - "video" Tag</h2>
+        <video controls width="560">
+          <source :src="video3_link" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="application.js"></script>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .flex-container {
+        display: flex;
+        justify-content: space-around; /* Distributes items with space between and around */
+        /* Other properties like align-items, flex-direction can be used */
+      }
+
+      .flex-item {
+        width: 45%;
+        padding: 10px;
+        /* border: 1px solid black;*/
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Week - 2</h1>
+    <h2>Basic Arrays</h2>
+    <ul>
+      <li>Collection of objects of any type</li>
+      <ul>
+        <li>
+          Can even be mixed type (numbers, strings, objects, functions...)
+        </li>
+      </ul>
+      <li>Element Access</li>
+      <li>Length</li>
+      <li>Holes</li>
+      <li>Iteration</li>
+    </ul>
+
+    <h2>Iteration</h2>
+    <ul>
+      <li>Go over all elements</li>
+      <li>Concepts:</li>
+      <ul>
+        <li>Iterable: an object whose contents can be accessed sequentially</li>
+        <li>Iterator: pointer to the next element</li>
+      </ul>
+      <li>Iterable Objects</li>
+      <ul>
+        <li>Array</li>
+        <li>String</li>
+        <li>Map</li>
+        <li>Set</li>
+        <li>Browser DOM - tree structure</li>
+      </ul>
+      <li>Objects: object.keys(), object.entries() -helper functions</li>
+    </ul>
+    <h2>Iterations and Transformations</h2>
+    <ul>
+      <li>Functions that take functions as input</li>
+      <li>map, filter, find</li>
+      <ul>
+        <li></li>
+        Apply a callback function over each element of array
+      </ul>
+      <li>Elements of functional programming: create a Transformation chain</li>
+    </ul>
+    <p>
+      <b>Callback:</b> important concept - function passed in to another
+      function, to be called back for some purpose
+    </p>
+
+    <h2>Other Collections</h2>
+    <ul>
+      <li>Maps: proper dinctionaries insted of objects</li>
+      <li>WeakMaps</li>
+      <li>Sets</li>
+    </ul>
+    <p>Read these advanced topics yourself</p>
+
+    <h2>Destructuring</h2>
+    <ul>
+      <li>Simple syntac to split an array into multiple variables</li>
+      <li>Easier to pass and collect arguments etc.</li>
+      <li>Also possible for objects</li>
+    </ul>
+    <h2>Generators</h2>
+    <ul>
+      <li>Functions that <em>yield</em> values one at a time</li>
+      <li>Computed iterables</li>
+      <li>Dynamically generate iterators</li>
+      <li>Advanced Topic</li>
+    </ul>
+
+    <hr />
+
+    <h2>Modules</h2>
+    <ul>
+      <li>Collect related functions, objects, values together</li>
+      <li>"export" values for use by other scripts</li>
+      <li>"import" values from other scripts, packages</li>
+    </ul>
+
+    <h2>Ways of implementing...</h2>
+    <p>(ascript, CommonJS, AMD, ECMAScript6++)</p>
+
+    <h2>npm</h2>
+    <ul>
+      <li>Node Package Manager</li>
+      <li>
+        Node:
+        <ul>
+          <li>command line interface for JS</li>
+          <li>Mainly used for backend code, can also be used for testing</li>
+        </ul>
+      </li>
+      <li>
+        npm can also be used to package modules for frontend
+        <ul>
+          <li>"Bundle" managers - webpack, rollup etc.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <!-- <script type="module" src="modularity.js"></script> -->
+      <code style="background-color: thistle">
+        &lt;script type="module" src="modularity.js"&gt;&lt;/script&gt; <br />
+      </code>
+      type "module" needed to use import and export statements
+    </p>
+    <h2>Objects</h2>
+    <ul>
+      <li>Everything is an object...</li>
+      <li>
+        Object literals
+        <ul>
+          <li>Assign values to named parameters in object</li>
+        </ul>
+      </li>
+      <li>
+        Object methods
+        <ul>
+          <li>Assign functions that can be called an object</li>
+        </ul>
+      </li>
+      <li>Special variable <code>"this"</code></li>
+      <li>
+        Function methods
+        <ul>
+          <li>call(), apply(), bind()</li>
+        </ul>
+      </li>
+      <li>
+        Object.keys(), values(), entries()
+        <ul>
+          <li>use as dictionary</li>
+          <li>iterators</li>
+        </ul>
+      </li>
+    </ul>
+    <h2>Prototype based inheritance</h2>
+    <ul>
+      <li>Object can have a "prototype"</li>
+      <li>Automatically get properties of parent</li>
+      <li>Single inheritance track</li>
+    </ul>
+    <!-- <script src="object.js"></script> -->
+    <hr />
+    <h2>Function Calls</h2>
+
+    <div class="flex-container">
+      <div class="flex-item">
+        <ul>
+          <li>Function is like a "branch"</li>
+          <ul>
+            <li>but must save present state so we can return</li>
+          </ul>
+          <li>Call stack:</li>
+          <ul>
+            <li>Keep track of chain of function called up to now</li>
+            <li>Pop back up out of stack</li>
+          </ul>
+        </ul>
+      </div>
+      <div class="flex-item">
+        <ul>
+          <li>main() on stack - current - calls f()</li>
+          <li>f() goes on stack - calls g()</li>
+          <li>g() goes on stack - calls h()</li>
+          <li>h() goes on stack - executes</li>
+          <li>return from h -> pop into g</li>
+          <li>return from g -> pop into f</li>
+          <li>return from f -> pop into main</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Event Loop and Task Queue</h2>
+    <ul>
+      <li>Task Queue: store next task to execute</li>
+      <ul>
+        <li>
+          Tasks are pushed into queue by events (clicks, input, network etc.)
+        </li>
+      </ul>
+      <li>Event loop:</li>
+      <ul>
+        <li>Wait for call stack to become empty</li>
+        <li>Pop task out of queue and push it onto stack, start executing</li>
+      </ul>
+      <li>Run-to-completion</li>
+      <ul>
+        <li>Guarantee from JavaScript runtime</li>
+        <li>Each task will run to completion before next task is invoked</li>
+      </ul>
+    </ul>
+
+    <h2>Blocking the browser</h2>
+    <p>
+      <a
+        href="https://exploringjs.com/js/book/ch_async-js.html#how-to-avoid-blocking-the-javascript-process"
+        >https://exploringjs.com/js/book/ch_async-js.html#how-to-avoid-blocking-the-javascript-process</a
+      >
+    </p>
+
+    <h2>Why callbacks?</h2>
+    <ul>
+      <li>Long running code</li>
+      <ul>
+        <li>Will block execution till it finishes!</li>
+      </ul>
+      <li>Push long running code into a separate "thread" or "task"</li>
+      <ul>
+        <li>Let main code proceed</li>
+        <li>Call back when completed</li>
+      </ul>
+    </ul>
+
+    <h2>Example: reading files - synchronous</h2>
+    <pre><code>
+      const fs = require('fs') 
+
+      try {
+        const data = fs.readFileSync('/Users/joe/test.txt', 'utf8')
+        console.log(data)
+      } catch (err) {
+        console.error(err)
+      }
+    </code></pre>
+
+    <h2>Example: reading files - asynchronous</h2>
+    <pre>
+      <code>
+      const fs = require('fs')
+      
+      fs.readFile('/Users/joe/test.txt', 'utf8', (err, data) => { 
+        if (err) { 
+          console.error(err) 
+          return 
+        } 
+        console.log(data) 
+      })
+    </code>
+  </pre>
+
+  <h2>Asynchronous</h2>
+  <div style="border: 0.1rem black solid;">
+      <ul style="list-style-type: square;">
+    <li>Asynchronous calls</li>
+    <li>Asynchronous Iteration</li>
+    <li>Basic ideas of Promises (async/await)</li>
+  </ul>
+  </div>
+
+  <ul>
+    <li>Very powerful - allows JS to have high performance even though it is single threaded</li>
+    <li>Can be difficult to comprehend</li>
+    <ul>
+      <li>Focus on using async libraries and functions before writing your own</li>
+    </ul>
+    <li>Promises, async function calls etc.</li>
+    <ul>
+      <li>Important and useful concepts</li>
+      <li>Deferred for now</li>
+    </ul>
+  </ul>
+
+    <script src="script.js"></script>
+  </body>
+</html>
